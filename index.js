@@ -2,6 +2,7 @@ import express from "express";
 import { PrismaClient } from "@prisma/client";
 import router from "./routes/index.js";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 const prisma = new PrismaClient();
 
@@ -22,6 +23,7 @@ main()
   });
 
 const app = new express();
+app.use(cors());
 
 //accept the application/json
 app.use(bodyParser.json());

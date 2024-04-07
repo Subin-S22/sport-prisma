@@ -71,6 +71,7 @@ const findOne = async (req, res) => {
   try {
     //param id
     const id = req.params.id;
+    console.log(id);
     //find all the sports
     const sports = await prisma.sport.findUnique({ where: { id: Number(id) } });
 
@@ -145,10 +146,10 @@ const update = async (req, res) => {
 };
 const remove = async (req, res) => {
   try {
-    let { id } = req.body;
+    let id = req.params.id;
 
     //create a sport with the given details
-    const sports = await prisma.sport.delete({ where: { id } });
+    const sports = await prisma.sport.delete({ where: { id: parseInt(id) } });
     //response
     return res
       .status(200)
