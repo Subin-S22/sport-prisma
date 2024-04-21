@@ -8,8 +8,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   // ... you will write your Prisma Client queries here
-  const allSports = await prisma.sport.findMany();
-  console.log(allSports);
+  // const allSports = await prisma.sport.findMany();
+  // console.log(allSports);
 }
 
 main()
@@ -23,6 +23,7 @@ main()
   });
 
 const app = new express();
+//request check
 app.use(cors());
 
 //accept the application/json

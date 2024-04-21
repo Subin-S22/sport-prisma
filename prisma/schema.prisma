@@ -14,19 +14,27 @@ datasource db {
 }
 
 model Sport {
-  id           Int      @id @default(autoincrement())
-  name         String   @unique
+  id           Int       @id @default(autoincrement())
+  name         String    @unique
   image        String
   description  String
   pitches      Int
   price        Float
   location     String
-  availability Int      @default(0)
-  createdAt    DateTime @default(now())
+  availability Int       @default(0)
+  createdAt    DateTime  @default(now())
+  booking      Booking[]
 }
 
 model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
   password String
+}
+
+model Booking {
+  id       Int      @id @default(autoincrement())
+  sport    Sport    @relation(fields: [sportId], references: [id])
+  sportId  Int
+  datetime DateTime
 }
