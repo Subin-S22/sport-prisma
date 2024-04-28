@@ -9,31 +9,35 @@ export const create = async (req, res) => {
     const booking = await prisma.booking.create({
       data: { datetime, sportId: sportId },
     });
-    res
+    return res
       .status(201)
-      .json({ data: booking, success: true, message: "Booking successful" });
+      .json({ data: booking, success: true, message: "Booking successfully" });
   } catch (err) {
     if (typeof err === "string") {
-      res.status(400).json({ data: [], success: false, message: err });
+      return res.status(400).json({ data: [], success: false, message: err });
     }
     if (err instanceof Error) {
-      res.status(400).json({ data: [], success: false, message: err.message });
+      return res
+        .status(400)
+        .json({ data: [], success: false, message: err.message });
     }
-    res
+    return res
       .status(500)
       .json({ data: [], success: false, message: "Booking failed" });
   }
 };
 
-export const get = async () => {
+export const get = async (_, res) => {
   try {
     //get all the booking data
-    const sports = await prisma.booking.findMany();
-    res
+    const sports = await prisma.booking.findMany({
+      include: { sport: true },
+    });
+    return res
       .status(200)
       .json({ data: sports, success: true, message: "data fetched!" });
   } catch (err) {
-    res
+    return res
       .status(400)
       .json({ data: [], success: false, message: "fetching failed!" });
   }
