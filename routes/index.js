@@ -11,5 +11,9 @@ router.route("/admin/sport").put(controller.admin.update);
 router.route("/admin/sport/:id").delete(controller.admin.remove);
 router.route("/admin/booking").post(controller.booking.create);
 router.route("/admin/booking").get(controller.booking.get);
+//user
+router.route("/user/signin").post(controller.user.signin);
+router.route("/user/login").post(controller.user.signin);
+router.route("/user/get/:id").get(controller.user.getUser);
 
 export default router;

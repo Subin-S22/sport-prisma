@@ -17,11 +17,11 @@
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
-    "prisma": "^5.11.0"
+    "prisma": "^5.13.0"
   },
   "dependencies": {
     "@babel/helper-validator-identifier": "^7.22.20",
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.13.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

@@ -32,7 +32,13 @@ export const get = async (_, res) => {
     //get all the booking data
     const sports = await prisma.booking.findMany({
       include: { sport: true },
+      where: {
+        datetime: {
+          gte: new Date(),
+        },
+      },
     });
+
     return res
       .status(200)
       .json({ data: sports, success: true, message: "data fetched!" });
