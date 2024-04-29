@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 export const create = async (req, res) => {
   try {
-    const { datetime, sportId } = req.body;
+    const { datetime, sportId, userId } = req.body;
 
     const booking = await prisma.booking.create({
-      data: { datetime, sportId: sportId },
+      data: { datetime, sportId: sportId, userId: userId },
     });
     return res
       .status(201)
